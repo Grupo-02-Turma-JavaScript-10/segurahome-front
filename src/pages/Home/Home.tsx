@@ -13,7 +13,7 @@ import {
   Buildings,
 } from 'phosphor-react'
 
-import heroImg from '../../assets/hero-segurahome.png'
+import heroImg from '../../assets/hero-banner.jpg'
 
 type TiltCardProps = {
   icon: React.ReactNode
@@ -26,6 +26,7 @@ type TiltCardProps = {
 function TiltCard({ icon, title, description, tag, accent = '#00A050' }: TiltCardProps) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [style, setStyle] = useState<React.CSSProperties>({})
+  const [spot, setSpot] = useState({ x: 50, y: 20, o: 0 })
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = ref.current
@@ -35,26 +36,30 @@ function TiltCard({ icon, title, description, tag, accent = '#00A050' }: TiltCar
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
 
+    const px = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    const py = Math.max(0, Math.min(100, (y / rect.height) * 100))
+
     const cx = rect.width / 2
     const cy = rect.height / 2
     const dx = x - cx
     const dy = y - cy
+    const rotateY = (dx / cx) * 10
+    const rotateX = -(dy / cy) * 10
 
-    const rotateY = (dx / cx) * 8
-    const rotateX = -(dy / cy) * 8
-
+    setSpot({ x: px, y: py, o: 1 })
     setStyle({
-      transform: `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`,
+      transform: `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`,
       transition: 'transform 40ms linear',
     })
   }
 
   function handleLeave() {
+    setSpot((s) => ({ ...s, o: 0 }))
     setStyle({
       transform: 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)',
-      transition: 'transform 180ms ease',
+      transition: 'transform 220ms ease',
     })
-    window.setTimeout(() => setStyle({}), 180)
+    window.setTimeout(() => setStyle({}), 220)
   }
 
   return (
@@ -62,13 +67,14 @@ function TiltCard({ icon, title, description, tag, accent = '#00A050' }: TiltCar
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="group relative h-full overflow-hidden rounded-[22px] border border-white/10 bg-[#202830]/60 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.45)]"
+      className="group relative h-full overflow-hidden rounded-[22px] border border-white/10 bg-[#202830]/60 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.45)] will-change-transform"
       style={style}
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{
-          background: `radial-gradient(520px 260px at 30% 10%, rgba(0,160,80,0.18), transparent 60%)`,
+          background: `radial-gradient(520px 260px at ${spot.x}% ${spot.y}%, rgba(0,160,80,0.18), transparent 60%)`,
+          opacity: spot.o,
         }}
       />
 
@@ -85,7 +91,6 @@ function TiltCard({ icon, title, description, tag, accent = '#00A050' }: TiltCar
         </div>
 
         <h3 className="mt-4 mb-2 font-['Sora'] text-lg text-[#F8F8F8]">{title}</h3>
-
         <p className="m-0 text-sm leading-relaxed text-[#E0E8E8]/80">{description}</p>
 
         <div className="mt-auto pt-4 inline-flex items-center gap-2 text-xs text-[#E0E8E8]/70">
@@ -93,6 +98,76 @@ function TiltCard({ icon, title, description, tag, accent = '#00A050' }: TiltCar
           {tag}
         </div>
       </div>
+    </article>
+  )
+}
+
+type HoverCardProps = {
+  icon: React.ReactNode
+  title: string
+  description: string
+  tag?: string
+  accent?: string
+}
+
+
+function HoverCard({ icon, title, description, tag, accent = '#00A050' }: HoverCardProps) {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [spot, setSpot] = useState({ x: 50, y: 20, o: 0 })
+
+  function handleMove(e: React.MouseEvent<HTMLDivElement>) {
+    const el = ref.current
+    if (!el) return
+
+    const rect = el.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    const px = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    const py = Math.max(0, Math.min(100, (y / rect.height) * 100))
+
+    setSpot({ x: px, y: py, o: 1 })
+  }
+
+  function handleLeave() {
+    setSpot((s) => ({ ...s, o: 0 }))
+  }
+
+  return (
+    <article
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className="group relative h-full overflow-hidden rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)] transition hover:-translate-y-1"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(520px 260px at ${spot.x}% ${spot.y}%, rgba(0,160,80,0.16), transparent 60%)`,
+          opacity: spot.o,
+        }}
+      />
+
+      <div className="relative">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+          {icon}
+        </div>
+
+        <h3 className="mt-4 mb-1 font-['Sora'] text-lg text-[#F8F8F8]">{title}</h3>
+        <p className="m-0 text-sm text-[#E0E8E8]/80">{description}</p>
+
+        {tag ? (
+          <div className="mt-4 inline-flex items-center gap-2 text-xs text-[#E0E8E8]/70">
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: `${accent}CC` }} />
+            {tag}
+          </div>
+        ) : null}
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-0 rounded-[18px] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        style={{ boxShadow: `inset 0 0 0 1px ${accent}22` }}
+      />
     </article>
   )
 }
@@ -107,9 +182,7 @@ function HeroIllustration() {
             Proteção residencial
           </div>
 
-          <h3 className="mt-4 mb-2 font-['Sora'] text-[22px] text-[#F8F8F8]">
-            Seu lar, mais protegido
-          </h3>
+          <h3 className="mt-4 mb-2 font-['Sora'] text-[22px] text-[#F8F8F8]">Seu lar, mais protegido</h3>
 
           <p className="m-0 text-sm leading-relaxed text-[#E0E8E8]/80">
             Aqui você consegue ver imóveis, coberturas e planos com clareza. Sem enrolação.
@@ -154,8 +227,7 @@ export function HomePage() {
 
             <p className="m-0 max-w-[70ch] leading-relaxed text-[#E0E8E8]/80">
               A SeguraHome ajuda você a organizar imóveis e planos de seguro residencial em um só lugar,
-              com um fluxo claro e fácil de usar. Com processos digitais e soluções modernas, garantimos mais 
-              segurança para o seu patrimônio, com praticidade e confiança do início ao fim.
+              com um fluxo claro e fácil de usar.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2.5">
@@ -196,10 +268,7 @@ export function HomePage() {
 
       <section className="py-12">
         <div className="mx-auto w-full max-w-[1120px] px-5">
-          <h2 className="m-0 font-['Sora'] text-[28px] tracking-[-0.02em]">
-            Por que escolher a SeguraHome?
-          </h2>
-
+          <h2 className="m-0 font-['Sora'] text-[28px] tracking-[-0.02em]">Por que escolher a SeguraHome?</h2>
           <p className="mt-2 mb-0 max-w-[80ch] text-[#E0E8E8]/80">
             A ideia é tirar a complicação do seguro residencial. Você vê tudo com clareza e consegue
             acompanhar seus imóveis e planos sem dor de cabeça.
@@ -213,7 +282,6 @@ export function HomePage() {
               tag="Coberturas sob medida • Assistência"
               accent="#00A050"
             />
-
             <TiltCard
               icon={<ShieldCheck size={20} weight="bold" className="text-[#F8F8F8]" />}
               title="Assistência residencial 24h"
@@ -221,7 +289,6 @@ export function HomePage() {
               tag="Agilidade • Tranquilidade"
               accent="#00A050"
             />
-
             <TiltCard
               icon={<Lightning size={20} weight="bold" className="text-[#F8F8F8]" />}
               title="Coberturas inteligentes"
@@ -237,12 +304,8 @@ export function HomePage() {
         <div className="mx-auto w-full max-w-[1120px] px-5">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="m-0 font-['Sora'] text-[28px] tracking-[-0.02em]">
-                Coberturas mais procuradas
-              </h2>
-              <p className="mt-2 mb-0 max-w-[78ch] text-[#E0E8E8]/80">
-                Um preview do que você encontra em nossos planos:
-              </p>
+              <h2 className="m-0 font-['Sora'] text-[28px] tracking-[-0.02em]">Coberturas mais procuradas</h2>
+              <p className="mt-2 mb-0 max-w-[78ch] text-[#E0E8E8]/80">Um preview do que você encontra em nossos planos:</p>
             </div>
 
             <a
@@ -254,41 +317,24 @@ export function HomePage() {
           </div>
 
           <div className="mt-6 grid gap-3 md:grid-cols-3">
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Flame size={18} weight="bold" className="text-[#F8F8F8]" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Incêndio e explosão</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Proteção para danos estruturais.</p>
-              <div className="mt-4 inline-flex items-center gap-2 text-xs text-[#E0E8E8]/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#00A050]/80" />
-                Estrutura
-              </div>
-            </div>
-
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Plug size={18} weight="bold" className="text-[#F8F8F8]" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Danos elétricos</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Cobertura para rede elétrica e aparelhos.</p>
-              <div className="mt-4 inline-flex items-center gap-2 text-xs text-[#E0E8E8]/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#00A050]/80" />
-                Equipamentos
-              </div>
-            </div>
-
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <LockKey size={18} weight="bold" className="text-[#F8F8F8]" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Roubo e furto qualificado</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Cobertura para perdas e danos.</p>
-              <div className="mt-4 inline-flex items-center gap-2 text-xs text-[#E0E8E8]/70">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#00A050]/80" />
-                Conteúdos
-              </div>
-            </div>
+            <HoverCard
+              icon={<Flame size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Incêndio e explosão"
+              description="Proteção para danos estruturais."
+              tag="Estrutura"
+            />
+            <HoverCard
+              icon={<Plug size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Danos elétricos"
+              description="Cobertura para rede elétrica e aparelhos."
+              tag="Equipamentos"
+            />
+            <HoverCard
+              icon={<LockKey size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Roubo e furto qualificado"
+              description="Cobertura para perdas e danos."
+              tag="Conteúdos"
+            />
           </div>
         </div>
       </section>
@@ -301,54 +347,28 @@ export function HomePage() {
           </p>
 
           <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <UsersThree size={18} weight="bold" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Famílias</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Mais segurança para a rotina e imprevistos.</p>
-            </div>
-
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Baby size={18} weight="bold" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Quem mora sozinho</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Assistência para resolver emergências.</p>
-            </div>
-
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Key size={18} weight="bold" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Quem aluga</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Protege seus bens e dá mais tranquilidade.</p>
-            </div>
-
-            <div className="rounded-[18px] border border-white/10 bg-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Buildings size={18} weight="bold" />
-              </div>
-              <h3 className="mt-4 mb-1 font-['Sora'] text-lg">Investidores</h3>
-              <p className="m-0 text-sm text-[#E0E8E8]/80">Acompanhar imóveis e coberturas com organização.</p>
-            </div>
+            <HoverCard
+              icon={<UsersThree size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Famílias"
+              description="Mais segurança para a rotina e imprevistos."
+            />
+            <HoverCard
+              icon={<Baby size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Quem mora sozinho"
+              description="Assistência para resolver emergências."
+            />
+            <HoverCard
+              icon={<Key size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Quem aluga"
+              description="Protege seus bens e dá mais tranquilidade."
+            />
+            <HoverCard
+              icon={<Buildings size={18} weight="bold" className="text-[#F8F8F8]" />}
+              title="Investidores"
+              description="Acompanhar imóveis e coberturas com organização."
+            />
           </div>
-
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            <a
-              href="/imoveis"
-              className="inline-flex select-none items-center justify-center gap-2.5 rounded-full border border-white/10 bg-[#202830]/35 px-3.5 py-2 text-[#F8F8F8] transition hover:-translate-y-0.5 hover:border-white/20"
-            >
-              Ver página de Imóveis <ArrowRight size={18} />
-            </a>
-
-            <a
-              href="/planos"
-              className="inline-flex select-none items-center justify-center gap-2.5 rounded-full border border-white/10 bg-[#202830]/35 px-3.5 py-2 text-[#F8F8F8] transition hover:-translate-y-0.5 hover:border-white/20"
-            >
-              Ver página de Planos <ArrowRight size={18} />
-            </a>
-          </div>
+          
         </div>
       </section>
     </div>
