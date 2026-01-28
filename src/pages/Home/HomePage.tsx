@@ -7,6 +7,8 @@ import {
   Sparkle,
 } from 'phosphor-react'
 
+import ListaPlanos from '../../components/planos/listaplanos/ListaPlanos'
+
 export function HomePage() {
   return (
     <div id="inicio">
@@ -138,95 +140,7 @@ export function HomePage() {
           <p className="mt-2 mb-0 max-w-[70ch] text-[#E0E8E8]/80">
             Cards estáticos para você conectar com sua API depois.
           </p>
-
-          <div className="mt-5 grid gap-3 lg:grid-cols-3">
-            <article className="relative overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-[#202830]/90 to-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="m-0 font-['Sora'] text-lg">Essencial</h3>
-                <span className="text-[#E0E8E8]/70">para começar</span>
-              </div>
-              <div className="mt-2.5 flex items-baseline gap-2">
-                <span className="font-['Sora'] text-[28px] font-black">R$ 29</span>
-                <span className="text-[#E0E8E8]/70">/mês</span>
-              </div>
-              <div className="mt-3.5 grid gap-2.5 text-[#F8F8F8]/90">
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Incêndio + explosão
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Danos elétricos básicos
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Assistência 24h
-                </div>
-              </div>
-              <a
-                href="#"
-                className="mt-4 inline-flex w-full select-none items-center justify-center gap-2.5 rounded-full border border-white/10 bg-transparent px-3.5 py-2 text-[#F8F8F8] transition hover:-translate-y-0.5 hover:border-white/20"
-              >
-                Selecionar
-              </a>
-            </article>
-
-            <article className="relative overflow-hidden rounded-[18px] border border-[#00A050]/45 bg-gradient-to-b from-[#202830]/92 to-[#202830]/60 p-5 shadow-[0_18px_60px_rgba(0,160,80,0.10)]">
-              <div className="absolute right-3.5 top-3.5 rounded-full border border-[#00A050]/45 bg-[#00A050]/14 px-2.5 py-2 text-xs text-[#F8F8F8]/90">
-                Recomendado
-              </div>
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="m-0 font-['Sora'] text-lg">Completo</h3>
-                <span className="text-[#E0E8E8]/70">custo-benefício</span>
-              </div>
-              <div className="mt-2.5 flex items-baseline gap-2">
-                <span className="font-['Sora'] text-[28px] font-black">R$ 49</span>
-                <span className="text-[#E0E8E8]/70">/mês</span>
-              </div>
-              <div className="mt-3.5 grid gap-2.5 text-[#F8F8F8]/90">
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Roubo + danos
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Danos elétricos ampliados
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Assistência premium
-                </div>
-              </div>
-              <a
-                href="#"
-                className="mt-4 inline-flex w-full select-none items-center justify-center gap-2.5 rounded-full border border-[#00A050]/40 bg-[#00A050]/20 px-3.5 py-2 text-[#F8F8F8] shadow-[0_12px_30px_rgba(0,160,80,0.18)] transition hover:-translate-y-0.5 hover:border-[#00A050]/55 hover:bg-[#00A050]/25"
-              >
-                Selecionar
-              </a>
-            </article>
-
-            <article className="relative overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-[#202830]/90 to-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="m-0 font-['Sora'] text-lg">Total</h3>
-                <span className="text-[#E0E8E8]/70">máxima proteção</span>
-              </div>
-              <div className="mt-2.5 flex items-baseline gap-2">
-                <span className="font-['Sora'] text-[28px] font-black">R$ 79</span>
-                <span className="text-[#E0E8E8]/70">/mês</span>
-              </div>
-              <div className="mt-3.5 grid gap-2.5 text-[#F8F8F8]/90">
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Coberturas estendidas
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Serviços emergenciais
-                </div>
-                <div className="inline-flex items-center gap-2.5">
-                  <CheckCircle size={18} /> Suporte prioritário
-                </div>
-              </div>
-              <a
-                href="#"
-                className="mt-4 inline-flex w-full select-none items-center justify-center gap-2.5 rounded-full border border-white/10 bg-transparent px-3.5 py-2 text-[#F8F8F8] transition hover:-translate-y-0.5 hover:border-white/20"
-              >
-                Selecionar
-              </a>
-            </article>
-          </div>
+          <ListaPlanos/>
         </div>
       </section>
 
