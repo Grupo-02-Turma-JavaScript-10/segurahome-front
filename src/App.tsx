@@ -1,6 +1,7 @@
 import { Footer } from './components/Footer/Footer'
 import { Navbar } from './components/Navbar/Navbar'
 import { HomePage } from './pages/Home/HomePage'
+import ListaPlanos from './components/planos/listaplanos/ListaPlanos'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <div className="min-h-screen font-['Inter'] text-[#F8F8F8]">
         <Navbar />
         <main className="pt-24 pb-16">
-          <HomePage />
+          <HomePage/>
         </main>
         <Footer />
       </div>
