@@ -26,7 +26,7 @@ function App() {
 
         <main className="pt-24 pb-16">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/planos" element={<PlanosPage />} />
             <Route path="/imoveis" element={<ImoveisPage />} />
             <Route path="/sobre" element={<SobrePage />} />

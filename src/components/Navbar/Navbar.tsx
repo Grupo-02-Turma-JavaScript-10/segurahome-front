@@ -17,7 +17,7 @@ export function Navbar() {
           }
         >
           <Link
-            to="/HomePage"
+            to="/home"
             aria-label="SeguraHome - Página inicial"
             className="inline-flex items-center gap-2.5 rounded-full border border-transparent px-3 py-2 transition hover:border-[#00A050]/45 hover:bg-[#00A050]/10 hover:shadow-[0_12px_30px_rgba(0,160,80,0.18)]"
           >
@@ -34,7 +34,7 @@ export function Navbar() {
 
           <nav aria-label="Navegação principal" className="hidden items-center justify-center gap-1.5 md:flex">
             <Link
-              to="/"
+              to="/home"
               className="inline-flex items-center gap-2.5 rounded-full border border-transparent px-3 py-2 text-[#F8F8F8]/90 transition hover:-translate-y-0.5 hover:border-[#00A050]/45 hover:bg-[#00A050]/15 hover:shadow-[0_12px_30px_rgba(0,160,80,0.22)]"
             >
               <House size={18} />
