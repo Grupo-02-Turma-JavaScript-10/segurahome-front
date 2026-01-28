@@ -8,6 +8,8 @@ import Imoveis from './pages/Imoveis/Imoveis'
 import { SobrePage } from './pages/Sobre/Sobre'
 import DeletarImovel from './components/deletaimovel/DeletarImovel'
 import FormImovel from './components/formimovel/FormImovel'
+import FormPlano from './components/planos/formplanos/FormPlano'
+import DeletarPlano from './components/planos/deleteplano/DeletePlano'
 
 
 
@@ -35,6 +37,9 @@ function App() {
             <Route path="/sobre" element={<SobrePage />} />
             <Route path="/deletarImovel/:id" element={<DeletarImovel />} />
             <Route path="/editarimovel/:id" element={<FormImovel />} />
+            <Route path="/editarPlano/:id" element={<FormPlano />} />
+            <Route path="/deletarPlano/:id" element={<DeletarPlano />} />
+            <Route path="/cadastrarplano" element={<FormPlano />} />
           </Routes>
         </main>
 
