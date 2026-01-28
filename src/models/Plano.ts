@@ -4,5 +4,5 @@ export default interface Plano{
     id: number;
     nome: string;
     precoArea: number;
-    imoveis: Imovel[];
+    imoveis?: Imovel[];
 }
