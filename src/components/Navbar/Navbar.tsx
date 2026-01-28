@@ -1,4 +1,5 @@
-import { FileText, House, Phone, ShieldCheck } from 'phosphor-react'
+import { Buildings, FileText, House, Phone, ShieldCheck } from 'phosphor-react'
+import { Link } from 'react-router-dom'
 
 export function Navbar() {
   return (
@@ -50,6 +51,14 @@ export function Navbar() {
               <Phone size={18} />
               <span>Contato</span>
             </a>
+
+            <Link
+              to="/imoveis"
+              className="inline-flex items-center gap-2.5 rounded-full border border-transparent px-3 py-2 text-[#F8F8F8]/90 transition hover:-translate-y-0.5 hover:border-white/10 hover:bg-[#202830]/25"
+            >
+              <Buildings size={18} />
+              <span>Imóveis</span>
+            </Link>
           </nav>
 
           <div aria-label="Ações" className="inline-flex items-center justify-end gap-2.5">
