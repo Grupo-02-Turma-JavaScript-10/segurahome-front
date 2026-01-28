@@ -6,6 +6,8 @@ import { HomePage } from './pages/Home/Home'
 import { PlanosPage } from './pages/Planos/Planos'
 import Imoveis from './pages/Imoveis/Imoveis'
 import { SobrePage } from './pages/Sobre/Sobre'
+import DeletarImovel from './components/deletaimovel/DeletarImovel'
+import FormImovel from './components/formimovel/FormImovel'
 
 
 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/planos" element={<PlanosPage />} />
             <Route path="/imoveis" element={<Imoveis />} />
             <Route path="/sobre" element={<SobrePage />} />
+            <Route path="/deletarImovel/:id" element={<DeletarImovel />} />
+            <Route path="/editarimovel/:id" element={<FormImovel />} />
           </Routes>
         </main>
 

@@ -11,5 +11,5 @@ export interface Imovel {
     tipoImovel: string
     areaConstruida: number;
     valor: number;
-    plano: Plano;
+    plano?: Plano;
 }
