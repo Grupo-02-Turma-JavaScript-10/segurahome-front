@@ -65,17 +65,6 @@ export function Navbar() {
               <span>Sobre nós</span>
             </Link>
           </nav>
-
-          <div aria-label="Ações" className="inline-flex items-center justify-end gap-2.5">
-            
-
-            <Link
-              to="/simular"
-              className="inline-flex select-none items-center justify-center gap-2.5 rounded-full border border-[#00A050]/40 bg-[#00A050]/20 px-3.5 py-2 text-[#F8F8F8] shadow-[0_12px_30px_rgba(0,160,80,0.18)] transition hover:-translate-y-0.5 hover:border-[#00A050]/55 hover:bg-[#00A050]/25"
-            >
-              Simular
-            </Link>
-          </div>
         </div>
       </div>
     </header>
