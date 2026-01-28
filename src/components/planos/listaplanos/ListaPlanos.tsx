@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type Plano from "../../../models/Plano";
 import { buscar } from "../../../services/Service";
 import CardPlanos from "../cardplanos/CardPlanos";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 export default function ListaPlanos() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -12,7 +13,7 @@ export default function ListaPlanos() {
     try {
       await buscar("/planos", setPlanos);
     } catch (error: any) {
-      alert("Erro ao buscar planos");
+      ToastAlerta("Erro ao buscar planos","erro");
     } finally {
       setIsLoading(false);
     }
