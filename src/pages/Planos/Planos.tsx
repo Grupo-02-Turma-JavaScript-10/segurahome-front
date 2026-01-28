@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CardPlanos from "../../components/planos/cardplanos/CardPlanos";
+import { buscar } from "../../services/Service";
 
 interface Plano {
   id: number;
@@ -10,14 +11,15 @@ interface Plano {
 
 export function PlanosPage() {
   const [planos, setPlanos] = useState<Plano[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-  
-    fetch("http://localhost:4000/planos") 
-      .then((res) => res.json())
-      .then((data) => setPlanos(data))
-      .catch((err) => console.error("Erro ao buscar planos:", err));
-  }, []);
+    buscarPlanos();    
+  }, [planos.length]);
+
+  async function buscarPlanos() {
+    buscar('/planos', setPlanos);
+  }
 
   return (
     <main className="px-6 py-10 text-white">
