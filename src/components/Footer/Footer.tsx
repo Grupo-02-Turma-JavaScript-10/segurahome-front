@@ -90,8 +90,8 @@ export function Footer() {
           <div className="my-4 h-px bg-[linear-gradient(90deg,transparent,rgba(224,232,232,0.18),transparent)]" />
 
           <div className="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
-            <span className="text-[#E0E8E8]/70">© 2026 SeguraHome</span>
-            <span className="text-[#E0E8E8]/70">Feito para customização do app</span>
+            <span className="text-[#E0E8E8]/70">© 2026 | SeguraHome</span>
+            <span className="text-[#E0E8E8]/70">Todos os direitos reservados.</span>
           </div>
         </div>
       </div>

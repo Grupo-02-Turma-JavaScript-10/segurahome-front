@@ -1,7 +1,12 @@
 import { Footer } from './components/Footer/Footer'
 import { Navbar } from './components/Navbar/Navbar'
-import { HomePage } from './pages/Home/HomePage'
-import ListaPlanos from './components/planos/listaplanos/ListaPlanos'
+import { HomePage } from './pages/Home/Home'
+import { Route, Routes } from 'react-router-dom'
+import { PlanosPage } from './pages/Planos/Planos'
+import { ImoveisPage } from './pages/Imoveis/Imoveis'
+import { SobrePage } from './pages/Sobre/Sobre'
+import FormPlano from './components/planos/formplano/FormPlano'
+import DeletarPlano from './components/planos/deleteplano/DeletePlano'
 
 function App() {
   return (
@@ -17,9 +22,18 @@ function App() {
 
       <div className="min-h-screen font-['Inter'] text-[#F8F8F8]">
         <Navbar />
+
         <main className="pt-24 pb-16">
-          <HomePage/>
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/planos" element={<PlanosPage />} />
+            <Route path="/imoveis" element={<ImoveisPage />} />
+            <Route path="/sobre" element={<SobrePage />} />
+            <Route path="/editarPlano/:id" element={<FormPlano />} />
+            <Route path="/deletarPlano/:id" element={<DeletarPlano />} />
+          </Routes>
         </main>
+
         <Footer />
       </div>
     </>

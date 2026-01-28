@@ -17,9 +17,12 @@ export default function CardPlanos({ plano }: CardPlanosProps){
                 </div>
                 </div>
                 <div className="flex gap-5">
-                    {/* Depois tem que adicionar os Links do react router nos botões */}
-                    <button className="w-full text-white bg-teal-400 hover:bg-teal-800 flex items-center justify-center py-2">Editar</button>
-                    <button className="text-white bg-red-400 hover:bg-red-700 w-full flex items-center justify-center">Deletar</button>
+                    <Link to={`/editarPlano/${plano.id}`}>
+                        <button className="w-full text-white bg-teal-400 hover:bg-teal-800 flex items-center justify-center py-2">Editar</button>
+                    </Link>
+                    <Link to={`/deletarPlano/${plano.id}`}>
+                        <button className="text-white bg-red-400 hover:bg-red-700 w-full flex items-center justify-center">Deletar</button>
+                    </Link>
                 </div>
             </div>
         </>
