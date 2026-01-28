@@ -1,4 +1,5 @@
-import type { Plano } from "./Plano";
+import type Plano from "./Plano";
+
 
 export interface Imovel {
     id: number;
