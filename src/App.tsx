@@ -14,6 +14,7 @@ import DeletarPlano from './components/planos/deleteplano/DeletePlano'
 
 function App() {
   return (
+    <>
     <BrowserRouter>
       <div
         aria-hidden="true"
@@ -45,6 +46,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </>
   )
 }
 
