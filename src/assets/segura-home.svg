@@ -22,7 +22,7 @@
 
     <!-- House -->
     <path d="M68 46 L86 60 V98 H50 V60 L68 46 Z" fill="#FFFFFF" opacity="0.98"/>
-    <path d="M60 98 V78 H76 V98" fill="#00A050" opacity="0.22"/>
+    <path d="M60 98 V78 H76 V98" fill="#FFFFFF" opacity="0.20"/>
 
     <!-- Tech Details -->
     <path d="M42 58 H32" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
@@ -31,26 +31,15 @@
     <circle cx="104" cy="58" r="3.2" fill="#FFFFFF" opacity="0.9"/>
   </g>
 
-  <!-- Text -->
+  <!-- Text (Branco + Verde) -->
   <g transform="translate(200,62)">
-    <!-- Brand -->
     <text x="0" y="40"
           font-family="Sora, Inter, system-ui, -apple-system, Segoe UI, sans-serif"
           font-size="54"
           font-weight="800"
           letter-spacing="-0.9"
-          fill="#0B1220">
+          fill="#FFFFFF">
       Segura<tspan fill="#00A050">Home</tspan>
-    </text>
-
-    <!-- Tagline -->
-    <text x="0" y="78"
-          font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
-          font-size="20"
-          font-weight="600"
-          fill="#0B1220"
-          opacity="0.84">
-      Confiança para morar. <tspan fill="#00A050">Tecnologia</tspan> para proteger.
     </text>
   </g>
 </svg>

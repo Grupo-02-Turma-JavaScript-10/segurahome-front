@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FileText, House, Phone, Buildings } from 'phosphor-react'
-import logo from '../../../public/favicon.svg'
+
+import logoText from '../../assets/segura-home.svg'
 
 export function Navbar() {
   return (
@@ -8,7 +9,8 @@ export function Navbar() {
       <div className="mx-auto w-full max-w-[1120px] px-5">
         <div
           className={
-            'grid items-center gap-4 px-3 py-3 ' +
+            'grid items-center gap-4 px-3 ' +
+            'h-16 ' + 
             'grid-cols-[1fr_auto_1fr] ' +
             'rounded-[18px] border border-white/10 ' +
             'bg-gradient-to-b from-[#202830]/70 to-[#202830]/30 ' +
@@ -19,18 +21,19 @@ export function Navbar() {
           <Link
             to="/home"
             aria-label="SeguraHome - Página inicial"
-            className="inline-flex items-center gap-2.5 rounded-full px-3 py-2"
+            className="inline-flex h-12 items-center gap-3 rounded-full px-3 overflow-visible"
           >
-            <img src={logo} alt="Logo SeguraHome" className="h-10 w-10 object-contain" />
-
-            <span
+            <img
+              src={logoText}
+              alt="SeguraHome"
               className="
-                font-['Sora'] text-xl md:text-2xl font-extrabold tracking-[-0.03em] text-white
-                transition-colors duration-200 hover:text-[#BFFFD5]
+                h-12 md:h-14
+                w-auto object-contain
+                -translate-y-[1px]
+                drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]
               "
-            >
-              SeguraHome
-            </span>
+              draggable={false}
+            />
           </Link>
 
           <nav
