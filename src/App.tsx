@@ -1,17 +1,14 @@
-import { Routes, Route } from 'react-router-dom'
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Footer } from './components/Footer/Footer'
 import { Navbar } from './components/Navbar/Navbar'
-import { HomePage } from './pages/Home/Home'
-import { PlanosPage } from './pages/Planos/Planos'
-import Imoveis from './pages/Imoveis/Imoveis'
-import { SobrePage } from './pages/Sobre/Sobre'
-
-
+import { HomePage } from './pages/Home/HomePage'
+import ImoveisPage from './pages/imovel/Imovel'
+import FormImovel from './components/formimovel/FormImovel'
+import DeletarImovel from './components/deletaimovel/DeletarImovel'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <div
         aria-hidden="true"
         className={
@@ -23,20 +20,20 @@ function App() {
 
       <div className="min-h-screen font-['Inter'] text-[#F8F8F8]">
         <Navbar />
-
+        
         <main className="pt-24 pb-16">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/planos" element={<PlanosPage />} />
-            <Route path="/imoveis" element={<Imoveis />} />
-            <Route path="/sobre" element={<SobrePage />} />
+            <Route path="/imoveis" element={<ImoveisPage />} />
+            <Route path="/cadastrarimovel" element={<FormImovel />} />
+            <Route path="/editarimovel/:id" element={<FormImovel />} />
+            <Route path="/deletarimovel/:id" element={<DeletarImovel />} />
           </Routes>
         </main>
 
         <Footer />
       </div>
-    </>
+    </BrowserRouter>
   )
 }
 
