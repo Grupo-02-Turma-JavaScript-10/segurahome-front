@@ -4,7 +4,7 @@ import { Footer } from './components/Footer/Footer'
 import { Navbar } from './components/Navbar/Navbar'
 import { HomePage } from './pages/Home/Home'
 import { PlanosPage } from './pages/Planos/Planos'
-import { ImoveisPage } from './pages/Imoveis/Imoveis'
+import Imoveis from './pages/Imoveis/Imoveis'
 import { SobrePage } from './pages/Sobre/Sobre'
 
 
@@ -26,9 +26,10 @@ function App() {
 
         <main className="pt-24 pb-16">
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/planos" element={<PlanosPage />} />
-            <Route path="/imoveis" element={<ImoveisPage />} />
+            <Route path="/imoveis" element={<Imoveis />} />
             <Route path="/sobre" element={<SobrePage />} />
           </Routes>
         </main>
