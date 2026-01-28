@@ -1,6 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
+
 import { Footer } from './components/Footer/Footer'
 import { Navbar } from './components/Navbar/Navbar'
-import { HomePage } from './pages/Home/HomePage'
+import { HomePage } from './pages/Home/Home'
+import { PlanosPage } from './pages/Planos/Planos'
+import { ImoveisPage } from './pages/Imoveis/Imoveis'
+import { SobrePage } from './pages/Sobre/Sobre'
+
+
 
 function App() {
   return (
@@ -16,9 +23,16 @@ function App() {
 
       <div className="min-h-screen font-['Inter'] text-[#F8F8F8]">
         <Navbar />
+
         <main className="pt-24 pb-16">
-          <HomePage />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/planos" element={<PlanosPage />} />
+            <Route path="/imoveis" element={<ImoveisPage />} />
+            <Route path="/sobre" element={<SobrePage />} />
+          </Routes>
         </main>
+
         <Footer />
       </div>
     </>

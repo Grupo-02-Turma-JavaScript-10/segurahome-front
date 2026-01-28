@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="180" viewBox="0 0 740 180" role="img" aria-label="SeguraHome Logo">
+  <defs>
+    <linearGradient id="greenGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00A050"/>
+      <stop offset="100%" stop-color="#007A3D"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(34,22)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="136" height="136" rx="44" fill="#0B1220"/>
+
+    <!-- Shield -->
+    <path d="M68 26 L102 40 V70
+             C102 95 86 111 68 118
+             C50 111 34 95 34 70 V40 L68 26 Z"
+          fill="url(#greenGrad2)"/>
+
+    <!-- House -->
+    <path d="M68 46 L86 60 V98 H50 V60 L68 46 Z" fill="#FFFFFF" opacity="0.98"/>
+    <path d="M60 98 V78 H76 V98" fill="#00A050" opacity="0.22"/>
+
+    <!-- Tech Details -->
+    <path d="M42 58 H32" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+    <path d="M104 58 H94" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="32" cy="58" r="3.2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="104" cy="58" r="3.2" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- Text -->
+  <g transform="translate(200,62)">
+    <!-- Brand -->
+    <text x="0" y="40"
+          font-family="Sora, Inter, system-ui, -apple-system, Segoe UI, sans-serif"
+          font-size="54"
+          font-weight="800"
+          letter-spacing="-0.9"
+          fill="#0B1220">
+      Segura<tspan fill="#00A050">Home</tspan>
+    </text>
+
+    <!-- Tagline -->
+    <text x="0" y="78"
+          font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"
+          font-size="20"
+          font-weight="600"
+          fill="#0B1220"
+          opacity="0.84">
+      Confiança para morar. <tspan fill="#00A050">Tecnologia</tspan> para proteger.
+    </text>
+  </g>
+</svg>
