@@ -6,6 +6,8 @@ import { HomePage } from './pages/Home/Home'
 import { PlanosPage } from './pages/Planos/Planos'
 import { ImoveisPage } from './pages/Imoveis/Imoveis'
 import { SobrePage } from './pages/Sobre/Sobre'
+import FormPlano from './components/planos/formplanos/FormPlano'
+import DeletarPlano from './components/planos/deleteplano/DeletePlano'
 
 
 
@@ -30,6 +32,9 @@ function App() {
             <Route path="/planos" element={<PlanosPage />} />
             <Route path="/imoveis" element={<ImoveisPage />} />
             <Route path="/sobre" element={<SobrePage />} />
+             <Route path="/editarPlano/:id" element={<FormPlano />} />
+            <Route path="/deletarPlano/:id" element={<DeletarPlano />} />
+            <Route path="/cadastrarplano" element={<FormPlano />} />
           </Routes>
         </main>
 
