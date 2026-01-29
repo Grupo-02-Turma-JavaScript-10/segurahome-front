@@ -7,8 +7,8 @@ export function PlanosPage() {
      
       <div className="mb-6 fixed z-999 bottom-2 right-2">
         <Link
-          to="/cadastrarplano"
-          className="inline-flex items-center justify-center gap-2.5 rounded-full border border-gray-400/40 px-4 py-2 text-gray-300 font-bold uppercase text-xs tracking-widest transition-all hover:-translate-y-0.5 hover:border-[#00A050] hover:text-[#00A050] hover:bg-[#00A050]/10 hover:shadow-[0_12px_30px_rgba(0,160,80,0.25)] active:scale-95 bg-[#00A050]/20"
+          to="/cadastrarimovel"
+          className="inline-flex items-center justify-center gap-2.5 rounded-full border border-transparent px-4 py-2 text-[#F8F8F8]/90 transition hover:-translate-y-0.5 hover:border-[#00A050]/45 hover:bg-[#00A050]/15 hover:shadow-[0_12px_30px_rgba(0,160,80,0.22)] bg-[#00A050]"
         >
           + Cadastrar Plano
         </Link>

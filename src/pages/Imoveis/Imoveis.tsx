@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CardImovel from "../../components/cardimovel/CardImovel"
+import CardImovel from "../../components/imovel/cardimovel/CardImovel"
 import type { Imovel } from "../../models/Imovel"
 import { ClipLoader } from "react-spinners"
 import { buscar } from "../../services/Service"

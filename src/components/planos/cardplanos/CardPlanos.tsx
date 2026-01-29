@@ -7,7 +7,7 @@ interface CardPlanosProps {
 
 export default function CardPlanos({ plano }: CardPlanosProps) {
   return (
-    <div className="relative overflow-hidden rounded-[18px] border border-white/10 bg-gradient-to-b from-[#202830]/90 to-[#202830]/55 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.55)] transition-all duration-300 hover:border-[#00A050]/40 hover:shadow-[0_20px_50px_rgba(0,160,80,0.15)]">
+    <div className="relative overflow-hidden rounded-[18px] border border-white/10 bg-[radial-gradient(520px_280px_at_0%_0%,rgba(0,160,80,0.10),transparent_60%),linear-gradient(180deg,rgba(32,40,48,0.92),rgba(0,0,0,0.72))] p-5 shadow-[0_12px_40px_rgba(0,0,0,0.55)] transition-all duration-300 hover:border-[#00A050]/40 hover:shadow-[0_20px_50px_rgba(0,160,80,0.15)]">
      
       <div className="flex items-baseline justify-between gap-3">
         <h4 className="m-0 font-['Sora'] text-lg text-white font-bold">{plano.nome}</h4>

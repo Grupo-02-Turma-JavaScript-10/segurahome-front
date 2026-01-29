@@ -44,7 +44,7 @@ export default function DeletarPlano() {
 
   return (
     <div className="flex items-center justify-center min-h-[70vh] px-4">
-      <div className="max-w-md w-full bg-gradient-to-br from-[#0F2F1F]/90 to-black/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+      <div className="max-w-md w-full bg-linear-to-br from-[#0F2F1F]/90 to-black/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
         
       
         <div className="flex justify-center mb-6">

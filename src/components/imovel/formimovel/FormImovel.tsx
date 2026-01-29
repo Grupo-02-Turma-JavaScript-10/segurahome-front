@@ -1,9 +1,10 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import type { Imovel } from "../../models/Imovel";
-import { atualizar, buscar, cadastrar } from "../../services/Service";
-import type Plano from "../../models/Plano";
+import type { Imovel } from "../../../models/Imovel";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import type Plano from "../../../models/Plano";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 export default function FormImovel() {
 
@@ -66,16 +67,19 @@ export default function FormImovel() {
     if (id !== undefined) {
       try {
         await atualizar(`/imovel`, imovel, setImovel)
+        
+        ToastAlerta(`Imóvel atualizado com sucesso!`, 'sucesso')
       }
       catch (error: any) {
-        alert(`Erro ao atualizar imóvel: ${error}`)
+        ToastAlerta(`Erro ao atualizar imóvel: ${error}`, 'erro')
       }
     }
     else {
       try {
         await cadastrar(`/imovel`, imovel, setImovel)
+        ToastAlerta(`Imóvel cadastrado com sucesso!`, 'sucesso')
       } catch (error: any) {
-        alert(`Erro ao cadastrar Imóvel: ${error}`)
+        ToastAlerta(`Erro ao cadastrar Imóvel: ${error}`, 'erro')
       }
     }
     
@@ -86,7 +90,7 @@ export default function FormImovel() {
   const carregandoPlano = plano.nome === ''
 
   return (
-    <section className="max-w-4xl p-8 mx-auto bg-[#202830]/60 backdrop-blur-xl border border-white/10 rounded-[24px] shadow-2xl">
+    <section className="max-w-4xl p-8 mx-auto bg-[#202830]/60 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl">
       <h2 className="text-2xl font-bold text-white text-center mb-8 uppercase tracking-tighter">
         {id !== undefined ? 'Editar' : 'Cadastrar'} <span className="text-[#00A050]">Imóvel</span>
       </h2>
@@ -199,7 +203,7 @@ export default function FormImovel() {
           </button>
           <button 
             type="submit" 
-            className="px-10 py-3 text-sm font-bold text-white bg-[#00A050]/80 rounded-full shadow-[0_10px_22px_rgba(0,160,80,0.2)] hover:bg-[#00A050] transition-all transform hover:-translate-y-1"
+            className="px-10 py-3 text-sm font-bold text-white bg-[#00A050] rounded-full shadow-[0_10px_22px_rgba(0,160,80,0.2)] hover:bg-[#00A050] transition-all transform hover:-translate-y-1"
             disabled={carregandoPlano}
           >
             {

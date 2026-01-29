@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { Imovel } from '../../models/Imovel'
+import type { Imovel } from '../../../models/Imovel'
 import { HouseLine, MapPin, Ruler, ShieldCheck, Pencil, Trash } from 'phosphor-react'
 
 interface CardImovelProps {
