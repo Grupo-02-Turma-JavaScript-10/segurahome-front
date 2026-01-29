@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import type Plano from "../../../models/Plano";
 import { buscar, deletar } from "../../../services/Service";
 import { RotateLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 export default function DeletarPlano() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function DeletarPlano() {
     try {
       await buscar(`/planos/${id}`, setPlano);
     } catch {
-      alert("Erro ao buscar Plano");
+      ToastAlerta("Erro ao buscar Plano","erro");
     }
   }
 
@@ -33,10 +34,10 @@ export default function DeletarPlano() {
     setIsLoading(true);
     try {
       await deletar(`/planos/${id}`);
-      alert("Plano deletado com sucesso!");
+      ToastAlerta("Plano deletado com sucesso!","sucesso");
       retornar();
     } catch {
-      alert("Erro ao deletar o Plano");
+      ToastAlerta("Erro ao deletar o Plano","erro");
     }
     setIsLoading(false);
   }

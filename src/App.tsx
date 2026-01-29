@@ -10,7 +10,8 @@ import DeletarImovel from './components/deletaimovel/DeletarImovel'
 import FormImovel from './components/formimovel/FormImovel'
 import FormPlano from './components/planos/formplanos/FormPlano'
 import DeletarPlano from './components/planos/deleteplano/DeletePlano'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -24,10 +25,9 @@ function App() {
           "bg-[radial-gradient(900px_520px_at_20%_-10%,rgba(0,160,80,0.22),transparent_60%),radial-gradient(720px_420px_at_85%_10%,rgba(224,232,232,0.10),transparent_55%),radial-gradient(760px_460px_at_70%_95%,rgba(0,160,80,0.12),transparent_55%),linear-gradient(180deg,rgba(0,0,0,1),rgba(0,0,0,1))]"
         }
       />
-
+      <ToastContainer />
       <div className="min-h-screen font-['Inter'] text-[#F8F8F8]">
         <Navbar />
-
         <main className="pt-24 pb-16">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -42,11 +42,10 @@ function App() {
             <Route path="/cadastrarplano" element={<FormPlano />} />
           </Routes>
         </main>
-
         <Footer />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

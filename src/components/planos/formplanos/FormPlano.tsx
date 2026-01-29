@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import type Plano from "../../../models/Plano";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { RotateLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 export default function FormPlano() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function FormPlano() {
     try {
       await buscar(`/planos/${id}`, setPlano);
     } catch {
-      alert("Erro ao buscar plano");
+      ToastAlerta("Erro ao buscar plano","erro");
       retornar();
     }
   }
@@ -53,18 +54,18 @@ export default function FormPlano() {
     if (id !== undefined) {
       try {
         await atualizar(`/planos`, plano, setPlano);
-        alert("Plano atualizado com sucesso!");
+        ToastAlerta("Plano atualizado com sucesso!","sucesso");
         retornar();
       } catch {
-        alert("Erro ao atualizar o plano");
+        ToastAlerta("Erro ao atualizar o plano","erro");
       }
     } else {
       try {
         await cadastrar(`/planos`, dadosParaEnvio, setPlano);
-        alert("Plano cadastrado com sucesso!");
+        ToastAlerta("Plano cadastrado com sucesso!","sucesso");
         retornar();
       } catch {
-        alert("Erro ao cadastrar o plano");
+        ToastAlerta("Erro ao cadastrar o plano","erro");
       }
     }
     setIsLoading(false);
