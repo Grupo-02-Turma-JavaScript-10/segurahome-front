@@ -57,9 +57,13 @@ function Imoveis() {
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">
           {(!isLoading && imoveis.length === 0) && (
-            <span className="text-3xl text-center my-8">
-              Nenhum Imóvel Encontrado!
-            </span>
+            <div className="mt-10 text-center">
+              <div className="inline-block px-6 py-4 rounded-2xl border border-gray-400/30 bg-gradient-to-br from-[#202830]/70 to-black/60 shadow-[0_8px_25px_rgba(0,0,0,0.45)]">
+                <span className="text-slate-300 font-semibold">
+                  Nenhum imóvel foi encontrado
+                </span>
+              </div>
+            </div>
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 mx-8">
             {
