@@ -35,8 +35,9 @@ function App() {
               <Route path="/planos" element={<PlanosPage />} />
               <Route path="/imoveis" element={<Imoveis />} />
               <Route path="/sobre" element={<SobrePage />} />
-              <Route path="/deletarImovel/:id" element={<DeletarImovel />} />
+              <Route path="/cadastrarimovel" element={<FormImovel />} />
               <Route path="/editarimovel/:id" element={<FormImovel />} />
+              <Route path="/deletarImovel/:id" element={<DeletarImovel />} />
               <Route path="/editarPlano/:id" element={<FormPlano />} />
               <Route path="/deletarPlano/:id" element={<DeletarPlano />} />
               <Route path="/cadastrarplano" element={<FormPlano />} />

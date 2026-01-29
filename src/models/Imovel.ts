@@ -10,6 +10,6 @@ export interface Imovel {
     complemento: string;
     tipoImovel: string
     areaConstruida: number;
-    valor: number;
+    valor?: number;
     plano?: Plano;
 }

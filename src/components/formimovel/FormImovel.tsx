@@ -12,7 +12,7 @@ export default function FormImovel() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [planos, setPlanos] = useState<Plano[]>([]);
 
-  const [plano, setPlano] = useState<Plano>({id: 0, nome: '', precoArea: 0})
+  const [plano, setPlano] = useState<Plano>({id: 0, nome: '', precoArea: 0, imoveis: []})
   const [imovel, setImovel] = useState<Imovel>({} as Imovel)
 
   const {id} = useParams<{id:string}>()
@@ -143,6 +143,19 @@ export default function FormImovel() {
               type="text" 
               className="block w-full px-4 py-3 mt-2 text-white bg-black/30 border border-white/10 rounded-xl focus:border-[#00A050]/50 outline-none transition-all" 
               value={imovel.bairro}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e) }
+            />
+          </div>
+          
+          {/* Cep */}
+          <div>
+            <label className="text-sm font-bold text-gray-300 ml-1" htmlFor="cep">Cep</label>
+            <input 
+              id="cep" 
+              name="cep"
+              type="text" 
+              className="block w-full px-4 py-3 mt-2 text-white bg-black/30 border border-white/10 rounded-xl focus:border-[#00A050]/50 outline-none transition-all" 
+              value={imovel.cep}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e) }
             />
           </div>
