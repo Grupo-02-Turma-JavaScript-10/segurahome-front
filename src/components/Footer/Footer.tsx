@@ -1,97 +1,68 @@
-import { GithubLogo, InstagramLogo, LinkedinLogo } from 'phosphor-react'
+import { Link } from 'react-router-dom'
+import logoIcon from '../../assets/logoIcon.svg'
 
 export function Footer() {
   return (
-    <footer id="contato" className="py-9 pb-14">
+    <footer className="pt-10 pb-14">
       <div className="mx-auto w-full max-w-[1120px] px-5">
         <div
           className={
-            'rounded-[18px] border border-white/10 p-5 ' +
-            'bg-gradient-to-b from-[#202830]/90 to-[#202830]/55 ' +
-            'shadow-[0_12px_40px_rgba(0,0,0,0.55)]'
+            'rounded-[18px] border border-white/10 ' +
+            'bg-gradient-to-b from-[#202830]/70 to-[#202830]/35 ' +
+            'shadow-[0_18px_60px_rgba(0,0,0,0.55)] ' +
+            'backdrop-blur-xl backdrop-saturate-150'
           }
         >
-          <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-            <div className="min-w-[240px]">
-              <div className="font-['Sora'] text-[18px] font-extrabold tracking-[-0.03em]">
-                SeguraHome
-              </div>
-              <p className="mt-2.5 mb-3.5 max-w-[52ch] leading-relaxed text-[#E0E8E8]/80">
-                Template inicial de UI: rápido, personalizável e com visual “liquid glass”.
-              </p>
+          <div className="px-6 py-6 sm:px-7">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3">
+                <img
+                  src={logoIcon}
+                  alt="SeguraHome"
+                  className="h-10 w-auto object-contain"
+                  draggable={false}
+                />
 
-              <div aria-label="Redes sociais" className="inline-flex gap-2.5">
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-[#202830]/25 transition hover:-translate-y-0.5 hover:border-[#00A050]/35 hover:bg-[#00A050]/10"
-                >
-                  <InstagramLogo size={18} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-[#202830]/25 transition hover:-translate-y-0.5 hover:border-[#00A050]/35 hover:bg-[#00A050]/10"
-                >
-                  <LinkedinLogo size={18} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-[#202830]/25 transition hover:-translate-y-0.5 hover:border-[#00A050]/35 hover:bg-[#00A050]/10"
-                >
-                  <GithubLogo size={18} />
-                </a>
-              </div>
-            </div>
-
-            <div aria-label="Links do rodapé" className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:justify-items-end">
-              <div className="grid w-full gap-2 lg:w-[180px]">
-                <div className="font-['Sora'] text-sm font-bold text-[#F8F8F8]/90">Produto</div>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#planos">
-                  Planos
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#simular">
-                  Simulação
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Coberturas
-                </a>
+                <div className="leading-tight">
+                  <p className="font-['Sora'] text-[15px] font-extrabold tracking-[-0.02em] text-[#F8F8F8]/95">
+                    SeguraHome
+                  </p>
+                  <p className="mt-0.5 text-sm text-[#E0E8E8]/70">
+                    Seguros com confiança e clareza.
+                  </p>
+                </div>
               </div>
 
-              <div className="grid w-full gap-2 lg:w-[180px]">
-                <div className="font-['Sora'] text-sm font-bold text-[#F8F8F8]/90">Empresa</div>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
+              <nav aria-label="Links do rodapé" className="flex flex-wrap gap-2.5">
+                <Link
+                  to="/sobre"
+                  className="rounded-full border border-white/10 bg-[#202830]/25 px-4 py-2 text-sm text-[#E0E8E8]/85 transition hover:-translate-y-0.5 hover:border-[#00A050]/40 hover:bg-[#00A050]/10 hover:text-[#F8F8F8]/95 hover:shadow-[0_12px_30px_rgba(0,160,80,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00A050]/45"
+                >
                   Sobre
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Privacidade
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Termos
-                </a>
-              </div>
+                </Link>
 
-              <div className="grid w-full gap-2 lg:w-[180px]">
-                <div className="font-['Sora'] text-sm font-bold text-[#F8F8F8]/90">Suporte</div>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Central de ajuda
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Fale conosco
-                </a>
-                <a className="w-fit border-b border-transparent py-1.5 text-[#E0E8E8]/80 transition hover:border-[#00A050]/40 hover:text-[#F8F8F8]/95" href="#">
-                  Status
-                </a>
-              </div>
+                <Link
+                  to="/planos"
+                  className="rounded-full border border-white/10 bg-[#202830]/25 px-4 py-2 text-sm text-[#E0E8E8]/85 transition hover:-translate-y-0.5 hover:border-[#00A050]/40 hover:bg-[#00A050]/10 hover:text-[#F8F8F8]/95 hover:shadow-[0_12px_30px_rgba(0,160,80,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00A050]/45"
+                >
+                  Planos
+                </Link>
+
+                <Link
+                  to="/imoveis"
+                  className="rounded-full border border-white/10 bg-[#202830]/25 px-4 py-2 text-sm text-[#E0E8E8]/85 transition hover:-translate-y-0.5 hover:border-[#00A050]/40 hover:bg-[#00A050]/10 hover:text-[#F8F8F8]/95 hover:shadow-[0_12px_30px_rgba(0,160,80,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00A050]/45"
+                >
+                  Imóveis
+                </Link>
+              </nav>
             </div>
-          </div>
 
-          <div className="my-4 h-px bg-[linear-gradient(90deg,transparent,rgba(224,232,232,0.18),transparent)]" />
+            <div className="my-5 h-px bg-[linear-gradient(90deg,transparent,rgba(224,232,232,0.18),transparent)]" />
 
-          <div className="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
-            <span className="text-[#E0E8E8]/70">© 2026 | SeguraHome</span>
-            <span className="text-[#E0E8E8]/70">Todos os direitos reservados.</span>
+            <div className="flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
+              <span className="text-[#E0E8E8]/65">© 2026 | SeguraHome</span>
+              <span className="text-[#E0E8E8]/65">Todos os direitos reservados.</span>
+            </div>
           </div>
         </div>
       </div>

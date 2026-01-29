@@ -10,6 +10,7 @@ export const buscar = async (url: string, setDados: Function) => {
 }
 
 export const cadastrar = async (url: string, dados: Object, setDados: Function) => {
+    console.log(JSON.stringify(dados))
     const resposta = await api.post(url, dados);
     setDados(resposta.data);
 }
